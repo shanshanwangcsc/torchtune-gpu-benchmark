@@ -19,12 +19,6 @@ pip install huggingface_hub
 2. Download Llama to the desired location:
 
 ```
-tune download meta-llama/Llama-3.2-1B-Instruct --output-dir <output_dir> --hf-token <hf-token>
-```
-
-By default, setup-csc.sh is suggesting "/scratch/dac/${USER}/torchtune_models/Llama-3.2-1B-Instruct" so I'd stick with that. Change dac to your own project number.
-
-```
 export MODEL_DIR="/scratch/dac/${USER}/torchtune_models/Llama-3.2-1B-Instruct" #change dac to your own project account number
 huggingface-cli login #put your token
 huggingface-cli download meta-llama/Llama-3.2-1B-Instruct --local-dir $MODEL_DIR
