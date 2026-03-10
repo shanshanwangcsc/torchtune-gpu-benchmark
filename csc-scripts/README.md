@@ -8,12 +8,12 @@ Code for running gpu benchmarks with torchtune on mahti
 ```
 module purge
 module use /appl/local/csc/modulefiles
-module load pytorch
+module load pytorch/2.7
 python3 -m venv --system-site-packages .venv
 source .venv/bin/activate
-pip install torchao
 pip install torchtune
 pip install wandb
+pip install huggingface_hub
 ```
 
 2. Download Llama to the desired location:
@@ -23,6 +23,12 @@ tune download meta-llama/Llama-3.2-1B-Instruct --output-dir <output_dir> --hf-to
 ```
 
 By default, setup-csc.sh is suggesting "/scratch/dac/${USER}/torchtune_models/Llama-3.2-1B-Instruct" so I'd stick with that. Change dac to your own project number.
+
+```
+export MODEL_DIR="/scratch/dac/${USER}/torchtune_models/Llama-3.2-1B-Instruct" #change dac to your own project account number
+huggingface-cli login #put your token
+huggingface-cli download meta-llama/Llama-3.2-1B-Instruct --local-dir $MODEL_DIR
+```
 
 3. Edit the slurm job
 - change the accout number to your own
